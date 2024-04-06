@@ -1,0 +1,9 @@
+{% if blog_latest_list %}
+    <ul>
+    {% for blog in blog_latest_list %}
+        <li><a href="/blog/{{ blog.id }}">{{ blog.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
