@@ -1,4 +1,16 @@
-{% load blog_tag %}
+<!-- templates/post.html -->
+{% extends "blog/base.html" %}
 
-<h2>{{blog.title}}</h2>
-{{blog.content|custom_markdown}}
+{% block title %}{{ post.title }} - My Blog{% endblock %}
+
+{% block heading %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <div class="post">
+        <h2>{{ post.title }}</h2>
+        <p class="date">{{ post.create_time }}</p>
+        <div class="content">{{ post.content|safe }}</div>
+        <!-- 添加主页跳转链接 -->
+        <a href="{% url 'blogs:index' %}">返回主页</a>
+    </div>
+{% endblock %}

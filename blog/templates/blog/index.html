@@ -1,9 +1,21 @@
-{% if blog_latest_list %}
-    <ul>
-    {% for blog in blog_latest_list %}
-        <li><a href="/blog/{{ blog.id }}">{{ blog.title }}</a></li>
+<!-- templates/index.html -->
+{% extends "blog/base.html" %}
+
+{% block title %}My Blog{% endblock %}
+
+{% block heading %}Welcome to My Blog{% endblock %}
+
+{% block content %}
+    <form action="{% url 'blogs:search' %}" method="GET">
+        <input type="text" name="query" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>
+    
+    {% for post in posts %}
+        <div class="post">
+            <h2><a href="{% url 'blogs:blog_detail' post.pk %}">{{ post.title }}</a></h2>
+            <p class="date">{{ post.create_time }}</p>
+            <div class="content">{{ post.content|safe }}</div>
+        </div>
     {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+{% endblock %}

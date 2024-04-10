@@ -1,0 +1,57 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Blog{% endblock %}</title>
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+            padding: 0 0 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .post {
+            margin: 20px 0;
+        }
+
+        .post h2 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .post .date {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .post .content {
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{% block heading %}{% endblock %}</h1>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
